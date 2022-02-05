@@ -1,0 +1,10 @@
+<form [formGroup]="myForm" (submit)="onSubmit()">
+    <label for="email" class="form-label">email:</label>
+    <input class="form-control" id="email" type="email" formControlName="email">
+
+    <label for="password" class="form-label">password:</label>
+    <input class="form-control" id="password" type="text" formControlName="password">
+
+    
+    <input class="btn btn-primary form-control mt-3" type="submit" name="submit" id="submit" value="log in">
+</form>

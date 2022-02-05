@@ -1,0 +1,36 @@
+<form [formGroup]="myForm" (submit)="onSubmit()">
+    <label for="Name" class="form-label">Name:</label>
+    <input class="form-control {{ isSubmitted && fs['Name'].errors? 'is-invalid' : ''}}" id="Name" type="text" formControlName="Name">
+    <div *ngIf="fs['Name'].errors?.['required'] && isSubmitted == true">
+        Name is required.
+      </div>
+      <div *ngIf="fs['Name'].errors?.['minlength'] && isSubmitted == true">
+        Name must be at least 4 characters long.
+      </div>
+      <div *ngIf="fs['Name'].errors?.['maxlength'] && isSubmitted == true">
+        Name must be less than 25 characters.
+    </div>
+
+    <label for="email" class="form-label">email:</label>
+    <input class="form-control" id="email" type="email" formControlName="email">
+
+    <label for="phone" class="form-label">phone:</label>
+    <input class="form-control" id="phone" type="text" formControlName="phone">
+
+    <div formGroupName="address">
+        <h2>Address</h2>
+    
+        <label for="street" class="form-label">Street: </label>
+        <input class="form-control" id="street" type="text" formControlName="street">
+    
+        <label for="city" class="form-label">City: </label>
+        <input class="form-control" id="city" type="text" formControlName="city">
+    
+        <label for="state" class="form-label">State: </label>
+        <input class="form-control" id="state" type="text" formControlName="state">
+    
+        <label for="zip" class="form-label">Zip Code: </label>
+        <input class="form-control" id="zip" type="text" formControlName="zip">
+    </div>
+    <input class="btn btn-primary form-control mt-3" type="submit" name="submit" id="submit" value="sign up">
+</form>

@@ -1,0 +1,19 @@
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img [src]="doctorsList.profilePhoto" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Dr / {{doctorsList.name}}</h5>
+          <ngb-rating [max]="5" [rate]="doctorsList.rate" style="color: #FFC107;" [readonly]="true"></ngb-rating><br>          
+          <fa-icon [icon]="faIdBadge"></fa-icon><span class="card-text p-2 ">specialist of {{doctorsList.specilaization}}</span><br>
+          <fa-icon [icon]="faMapMarker"></fa-icon><span class="card-text p-2">address /  {{doctorsList.address}}</span><br>
+          <fa-icon [icon]="faMoneyBillWaveAlt"></fa-icon><span class="card-text p-2">fees /  {{doctorsList.fees}} EGP</span><br>
+          <fa-icon [icon]="faPhoneAlt"></fa-icon><span class="card-text p-2">tel /  {{doctorsList.tel}}</span><br>
+          <!-- <span class="card-text"><small class="text-muted p-2">waiting time {{ doctorsList.waitTime }} mins</small></span> -->
+          <button class="btn-primary rounded position-absolute bottom-0 end-0 m-3" (click)="getData(doctorsList.id)">more Details</button>
+        </div>
+      </div>
+    </div>
+  </div>

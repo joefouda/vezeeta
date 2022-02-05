@@ -1,0 +1,6 @@
+<div *ngIf="doctors.length != 0 else notfound">
+    <app-doctor-card  *ngFor="let item of doctors;let i = index" [doctorsList]='doctors[i]'></app-doctor-card>
+</div>
+<ng-template #notfound>
+    no doctors yet
+</ng-template>
