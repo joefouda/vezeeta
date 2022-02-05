@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DoctorService } from '../doctor.service';
+import { DoctorService } from '../service/doctor.service';
 @Component({
   selector: 'app-doctor-list',
   templateUrl: './doctor-list.component.html',
