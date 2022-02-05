@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +13,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { DoctorDetailsComponent } from './doctor-details/doctor-details.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { AddFormComponent } from './components/add-form/add-form.component';
+import { EditFormComponent } from './components/edit-form/edit-form.component';
 
 @NgModule({
   declarations: [
@@ -21,14 +25,18 @@ import { DoctorDetailsComponent } from './doctor-details/doctor-details.componen
     NavbarComponent,
     SignUpComponent,
     LogInComponent,
-    DoctorDetailsComponent
+    DoctorDetailsComponent,
+    AdminComponent,
+    AddFormComponent,
+    EditFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     FontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

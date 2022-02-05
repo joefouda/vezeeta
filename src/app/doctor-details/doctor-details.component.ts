@@ -20,12 +20,13 @@ export class DoctorDetailsComponent implements OnInit {
   doctor:any;
   doctorId:any;
   getDoctor(id:number){
-    this.doctor = this.doctoreService.getDoctor(id)[0];
+    this.doctoreService.getDoctor(id).subscribe((res)=>{
+      this.doctor = res
+    });
   }
   ngOnInit(): void {
     this.doctorId = this.route.snapshot.params['dId'];
     this.getDoctor(this.doctorId);
-    console.log(this.doctor)
   }
 
 }
