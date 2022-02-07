@@ -1,7 +1,6 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { DoctorService } from 'src/app/service/doctor.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { doctors } from 'src/app/service/doctors-array';
 
 @Component({
   selector: 'app-admin',
@@ -18,9 +17,10 @@ export class AdminComponent implements OnInit {
   getDoctors(){
     this.doctorService.getAllDoctors().subscribe(res => {
       this.doctors = res
+      console.log(res)
     })
   }
-  deleteDoctor(id:number,name:string,content:any){
+  deleteDoctor(id:any,name:string,content:any){
     this.name = name;
     // this.doctorService.deleteDoctor(id).subscribe(()=>{this.getDoctors()})
     this._modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -34,7 +34,7 @@ export class AdminComponent implements OnInit {
     this._modalService.open(addForm, {ariaLabelledBy: 'modal-basic-title'})
   }
 
-  editDoctor(id:number,editForm:any){
+  editDoctor(id:any,editForm:any){
     this.doctorService.getDoctor(id).subscribe(res=>{
       this.doctor = res;
     })

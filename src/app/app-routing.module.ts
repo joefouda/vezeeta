@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DoctorListComponent } from './doctor-list/doctor-list.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { LogInComponent } from './log-in/log-in.component';
-import { DoctorDetailsComponent } from './doctor-details/doctor-details.component';
+import { DoctorListComponent } from './pages/admin/doctor-list/doctor-list.component';
+import { SignUpComponent } from './pages/admin/sign-up/sign-up.component';
+import { LogInComponent } from './pages/admin/log-in/log-in.component';
+import { DoctorDetailsComponent } from './pages/admin/doctor-details/doctor-details.component';
 import { AdminComponent } from './pages/admin/admin.component';
 
 const routes: Routes = [

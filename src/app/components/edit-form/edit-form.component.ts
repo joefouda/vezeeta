@@ -32,7 +32,7 @@ export class EditFormComponent implements OnInit {
     name: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(25)]],
     email: [''],
     profilePhoto: ["../assets/doctor1.jpg"],
-    specilaization: [''],
+    specialization: [''],
     fees: [''],
     address: [''],
     tel: [''],

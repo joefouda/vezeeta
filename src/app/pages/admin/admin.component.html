@@ -14,8 +14,8 @@
             <td scope="row">{{ item.name }}</td>
             <td>{{ item.tel }}</td>
             <td>
-                <button class="btn btn-danger" (click)="deleteDoctor(item.id,item.name,content)">Delete</button>
-                <button class="btn btn-primary" (click)="editDoctor(item.id,editForm)">Edit</button>
+                <button class="btn btn-danger" (click)="deleteDoctor(item._id,item.name,content)">Delete</button>
+                <button class="btn btn-primary" (click)="editDoctor(item._id,editForm)">Edit</button>
             </td>
             <td>-----------------</td>
         </tr>

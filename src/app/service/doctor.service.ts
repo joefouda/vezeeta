@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-// import { doctors } from './doctors-array';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
@@ -12,11 +11,11 @@ export class DoctorService {
     return this.http.get(`${environment.base_url}doctors`)
   }
 
-  getDoctor(id: number) {
+  getDoctor(id: any) {
     return this.http.get(`${environment.base_url}doctors/${id}`)
   }
 
-  deleteDoctor(id: number) {
+  deleteDoctor(id: any) {
     return this.http.delete(`${environment.base_url}doctors/${id}`)
   }
   
@@ -25,7 +24,7 @@ export class DoctorService {
     return this.http.post(`${environment.base_url}doctors`,data)
   }
 
-  editDoctor(id:number,data:any){
+  editDoctor(id:any,data:any){
     return this.http.put(`${environment.base_url}doctors/${id}`,data)
   }
 
