@@ -1,0 +1,21 @@
+import { Injectable } from "@angular/core";
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
+import { map, Observable, take } from "rxjs";
+import { DoctorService } from "../service/doctor.service";
+
+@Injectable({ providedIn: 'root' })
+
+export class LogOutGard implements CanActivate {
+    constructor(private doctorService: DoctorService, private router:Router) { }
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+        return this.doctorService.doctor.pipe(
+            take(1),
+            map(doc=>{
+            const isAuthenticated = doc ? true:false
+            if(isAuthenticated){
+                return this.router.createUrlTree(['/home']);
+            }
+            return true;
+        }))
+    }
+}

@@ -5,22 +5,24 @@
             <th scope="col">name</th>
             <th scope="col">telephone</th>
             <th scope="col">actions</th>
-            <th scope="col"><button class="btn btn-primary" (click)="addDoctor(addForm)">Add Doctor</button></th>
         </tr>
     </thead>
     <tbody>
+        <!-- display all doctors -->
         <tr *ngFor="let item of doctors, let i = index">
             <td>{{i+1}}</td>
             <td scope="row">{{ item.name }}</td>
             <td>{{ item.tel }}</td>
             <td>
+                <!-- send doctor id and doctor name and ng template for delete button reference -->
                 <button class="btn btn-danger" (click)="deleteDoctor(item._id,item.name,content)">Delete</button>
-                <button class="btn btn-primary" (click)="editDoctor(item._id,editForm)">Edit</button>
             </td>
             <td>-----------------</td>
         </tr>
     </tbody>
 </table>
+
+<!-- ng template for delete button -->
 <ng-template #content let-modal>
     <div class="modal-header">
         <h4 class="modal-title" id="modal-title">Delete Doctor</h4>
@@ -37,31 +39,5 @@
     <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
         <button type="button" class="btn btn-danger" (click)="modal.close('Ok click')">Ok</button>
-    </div>
-</ng-template>
-
-<ng-template #addForm let-modal>
-    <div class="modal-header">
-        <h4 class="modal-title" id="modal-title">Add Doctor</h4>
-        <button type="button" class="close" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <app-add-form (newItemEvent)="addItem($event)"></app-add-form>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Done</button>
-    </div>
-</ng-template>
-
-<ng-template #editForm let-modal>
-    <div class="modal-header">
-        <h4 class="modal-title" id="modal-title">Edit Doctor</h4>
-        <button type="button" class="close" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <app-edit-form [editedDoc]="doctor" (newItemEvent)="editItem($event)"></app-edit-form>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Done</button>
     </div>
 </ng-template>

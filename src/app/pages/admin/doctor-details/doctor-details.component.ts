@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DoctorService } from '../../../service/doctor.service';
 import { faPercent,faIdBadge,faMapMarker,faMoneyBillWaveAlt,faPhoneAlt,faSpinner } from '@fortawesome/free-solid-svg-icons';
@@ -19,14 +19,14 @@ export class DoctorDetailsComponent implements OnInit {
 
   doctor:any;
   doctorId:any;
-  getDoctor(id:number){
-    this.doctoreService.getDoctor(id).subscribe((res)=>{
+  getDetails(id:number){
+    this.doctoreService.getDoctorDetails(id).subscribe((res)=>{
       this.doctor = res
     });
   }
   ngOnInit(): void {
     this.doctorId = this.route.snapshot.params['dId'];
-    this.getDoctor(this.doctorId);
+    this.getDetails(this.doctorId);
   }
 
 }

@@ -14,8 +14,8 @@ import { SignUpComponent } from './pages/admin/sign-up/sign-up.component';
 import { LogInComponent } from './pages/admin/log-in/log-in.component';
 import { DoctorDetailsComponent } from './pages/admin/doctor-details/doctor-details.component';
 import { AdminComponent } from './pages/admin/admin.component';
-import { AddFormComponent } from './components/add-form/add-form.component';
-import { EditFormComponent } from './components/edit-form/edit-form.component';
+import { ProfileComponent } from './pages/admin/profile/profile.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -27,8 +27,8 @@ import { EditFormComponent } from './components/edit-form/edit-form.component';
     LogInComponent,
     DoctorDetailsComponent,
     AdminComponent,
-    AddFormComponent,
-    EditFormComponent
+    ProfileComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

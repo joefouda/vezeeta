@@ -16,9 +16,6 @@ export class DoctorCardComponent implements OnInit {
   faMapMarker = faMapMarker;
   faMoneyBillWaveAlt = faMoneyBillWaveAlt;
   faPhoneAlt = faPhoneAlt;
-  loading = false;
-  placeholder = 'more Details';
-  faSpinner = faSpinner
   getData(dId:number){
     this.route.navigate(['doctor-details',dId])
   }

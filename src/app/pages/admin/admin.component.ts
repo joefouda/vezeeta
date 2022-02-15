@@ -13,13 +13,15 @@ export class AdminComponent implements OnInit {
   name:any;
   constructor(private doctorService:DoctorService,private _modalService: NgbModal) { }
 
-
+  // get all doctors to display them for the admin
   getDoctors(){
     this.doctorService.getAllDoctors().subscribe(res => {
       this.doctors = res
       console.log(res)
     })
   }
+
+  // delete doctor by id
   deleteDoctor(id:any,name:string,content:any){
     this.name = name;
     // this.doctorService.deleteDoctor(id).subscribe(()=>{this.getDoctors()})
@@ -29,28 +31,6 @@ export class AdminComponent implements OnInit {
         this.getDoctors();
       }); 
     });
-  }
-  addDoctor(addForm:any){
-    this._modalService.open(addForm, {ariaLabelledBy: 'modal-basic-title'})
-  }
-
-  editDoctor(id:any,editForm:any){
-    this.doctorService.getDoctor(id).subscribe(res=>{
-      this.doctor = res;
-    })
-    this._modalService.open(editForm, {ariaLabelledBy: 'modal-basic-title'})
-  }
-
-  editItem(newItem: any) {
-    this.doctors.map((ele:any)=>{
-      if(ele.id == newItem.id){
-        Object.assign(ele,newItem)
-      }
-    });
-  }
-
-  addItem(newItem: object) {
-    this.doctors.push(newItem);
   }
 
   ngOnInit(): void {

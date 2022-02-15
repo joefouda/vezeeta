@@ -5,17 +5,23 @@
         <span class="navbar-toggler-icon"></span>
       </button>
         <ul id="routers">
-          <li>
+          <!-- <li>
             <a class="m-2" aria-current="page" href="admin-dashboard">admin-dashboard</a>
+          </li> -->
+          <li *ngIf="isAuthenticated">
+            <a class="m-2" aria-current="page" routerLink="/home">Home</a>
           </li>
-          <li>
-            <a class="m-2" aria-current="page" href="home">Home</a>
+          <li *ngIf="isAuthenticated">
+            <a class="m-2" aria-current="page" routerLink="/profile">Profile</a>
           </li>
-          <li>
-            <a class="m-2" href="sign-up">sign Up</a>
+          <li *ngIf="isAuthenticated">
+            <a class="m-2" style="cursor: pointer;" (click)="logOut()">log Out</a>
           </li>
-          <li>
-            <a class="m-2" href="log-in">log In</a>
+          <li *ngIf="!isAuthenticated">
+            <a class="m-2" routerLink="sign-up">sign Up</a>
+          </li>
+          <li *ngIf="!isAuthenticated">
+            <a class="m-2" routerLink="log-in">log In</a>
           </li>
         </ul>
       </div>

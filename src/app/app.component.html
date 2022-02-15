@@ -1,5 +1,7 @@
-<app-navbar></app-navbar>
-<div class="m-auto w-50">
-    <router-outlet></router-outlet>
-</div>
+<!-- check wither to display navbar or not -->
+<app-navbar *ngIf="shouldDisplayNavBar()"></app-navbar>
+<p *ngIf="auth">
+    <ngb-alert type="danger" [dismissible]="false">{{ auth }} <a href="log-in">login page</a></ngb-alert>
+</p>
+<router-outlet></router-outlet>
 

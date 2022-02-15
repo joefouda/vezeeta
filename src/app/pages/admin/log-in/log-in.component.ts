@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from "@angular/forms";
+import { DoctorService } from 'src/app/service/doctor.service';
+import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { Doctor } from 'src/app/auth/doctor.model';
 
 @Component({
   selector: 'app-log-in',
@@ -7,24 +11,35 @@ import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from "@ang
   styleUrls: ['./log-in.component.scss']
 })
 export class LogInComponent implements OnInit {
-
-  constructor(private fb: FormBuilder) { }
+  auth:any;
+  constructor(private fb: FormBuilder,private doctorDervice:DoctorService, private router:Router) { }
   isSubmitted = false;
 
   ngOnInit(): void {
   }
   myForm= this.fb.group({
-    email:[''],
-    password:[''],
+    username:['',[Validators.required,Validators.pattern('[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$')]],
+    password:['',Validators.required],
   })
 
   onSubmit(){
     this.isSubmitted = true
-    console.log(this.myForm.value);
-
-    setTimeout(()=>{
-      this.isSubmitted = false;
-    },3000)
+    if(this.myForm.status !== 'INVALID'){
+      this.doctorDervice.logIn(this.myForm.value).subscribe((res:any)=>{
+        // display error message if email or password are incorrect
+        if(res.message == "invalid username or password"){
+          this.auth = res.message;
+          setTimeout(()=>{
+            this.auth = undefined 
+          },3000)
+        } else {
+          // navigate to home page if user exist
+          this.router.navigate(['home'])
+        }
+      }, (err)=>{
+        console.log(err);
+      });
+    }
   }
   get fs() { return this.myForm.controls; }
 }

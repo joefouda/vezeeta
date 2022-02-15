@@ -1,19 +1,71 @@
-<div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img [src]="doctor.profilePhoto" class="img-fluid rounded-start" alt="...">
+<section style="background-color: #eee;">
+  <div class="container-xl py-5">
+
+    <div class="row">
+      <div class="col-4">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+              class="rounded-circle img-fluid" style="width: 150px;">
+            <h5 class="my-3">{{ doctor?.name }}</h5>
+            <p class="text-muted mb-1">specialist of {{doctor?.specialization}}</p>
+            <p class="text-muted mb-4">{{doctor?.address}}</p>
+            <div class="d-flex justify-content-center mb-2">
+              <button type="button" class="btn btn-primary">Contact</button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Dr / {{doctor.name}}</h5>
-          <ngb-rating [max]="5" [rate]="doctor.rate" style="color: #FFC107;" [readonly]="true"></ngb-rating><br>          
-          <fa-icon [icon]="faIdBadge"></fa-icon><span class="card-text p-2 ">specialist of {{doctor.specilaization}}</span><br>
-          <fa-icon [icon]="faMapMarker"></fa-icon><span class="card-text p-2">address /  {{doctor.address}}</span><br>
-          <fa-icon [icon]="faMoneyBillWaveAlt"></fa-icon><span class="card-text p-2">fees /  {{doctor.fees}} EGP</span><br>
-          <fa-icon [icon]="faPhoneAlt"></fa-icon><span class="card-text p-2">tel /  {{doctor.tel}}</span><br>
-          <span class="card-text"><small class="text-muted p-2">waiting time {{ doctor.waitTime }} mins</small></span>
-          
+      <div class="col-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Name</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ doctor?.name }}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Email</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{doctor?.email}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Phone</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{doctor?.tel}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Fees</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{doctor?.fees}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Address</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{doctor?.address}}</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</section>
