@@ -1,0 +1,87 @@
+<div class="m-auto w-50 mt-3 p-4 box-shadowing">
+  <!-- sign up form -->
+  <form [formGroup]="myForm" (submit)="onSubmit()">
+    <!-- validation on name input -->
+    <input class="form-control form-control-sm {{fs['name'].errors && (isSubmitted == true || fs['name'].touched)? 'is-invalid' : ''}}"
+      id="name" type="text" formControlName="name" placeholder="Name">
+    <div *ngIf="fs['name'].errors?.['required'] && (isSubmitted == true || fs['name'].touched)">
+      name is required.
+    </div>
+    <div *ngIf="fs['name'].errors?.['minlength'] && (isSubmitted == true || fs['name'].touched)">
+      name must be at least 4 characters long.
+    </div>
+    <div *ngIf="fs['name'].errors?.['maxlength'] && (isSubmitted == true || fs['name'].touched)">
+      name must be less than 25 characters.
+    </div>
+
+    <!-- validation on email input -->
+    <input class="form-control form-control-sm  {{fs['email'].errors && (isSubmitted == true || fs['email'].touched)? 'is-invalid' : ''}}"
+      id="email" type="email" formControlName="email" placeholder="Email">
+    <div *ngIf="fs['email'].errors?.['required'] && (isSubmitted == true || fs['email'].touched)">
+      Email is required.
+    </div>
+    <div *ngIf="fs['email'].errors?.['pattern'] && (isSubmitted == true || fs['email'].touched)">
+      invalid email format
+    </div>
+
+    <!-- validation on password input -->
+    <input
+      class="form-control form-control-sm  {{fs['password'].errors && (isSubmitted == true || fs['password'].touched)? 'is-invalid' : ''}}"
+      id="password" type="password" formControlName="password" placeholder="Password">
+    <div *ngIf="fs['password'].errors?.['required'] && (isSubmitted == true || fs['password'].touched)">
+      password is required.
+    </div>
+    <div *ngIf="fs['password'].errors?.['pattern'] && (isSubmitted == true || fs['password'].touched)">
+      password must be at least 8 characters long, must have at least one letter.
+    </div>
+
+    <!-- validation on password confirmation input -->
+    <input
+      class="form-control form-control-sm  {{ fs['confirmPassword'].errors?.['notEquivalent'] && (isSubmitted == true || fs['confirmPassword'].touched)? 'is-invalid' : ''}}"
+      id="confirmPassword" type="password" formControlName="confirmPassword" placeholder="Confirm Password">
+    <div *ngIf="fs['confirmPassword'].errors?.['notEquivalent'] && (isSubmitted == true || fs['confirmPassword'].touched)">
+      password and password confirmation not matched.
+    </div>
+    
+    <!-- validation on specialization input -->
+    <input
+      class="form-control form-control-sm  {{fs['specialization'].errors && (isSubmitted == true || fs['specialization'].touched)? 'is-invalid' : ''}}"
+      id="specialization" type="text" formControlName="specialization" placeholder="Specialization">
+    <div *ngIf="fs['specialization'].errors?.['required'] && (isSubmitted == true || fs['specialization'].touched)">
+      specialization is required.
+    </div>
+
+    <!-- validation on address input -->
+    <input
+      class="form-control form-control-sm  {{fs['address'].errors && (isSubmitted == true || fs['address'].touched)? 'is-invalid' : ''}}"
+      id="address" type="address" formControlName="address" placeholder="Address">
+    <div *ngIf="fs['address'].errors?.['required'] && (isSubmitted == true || fs['address'].touched)">
+      address is required.
+    </div>
+
+    <!-- validation on tel input -->
+    <input class="form-control form-control-sm  {{fs['tel'].errors && (isSubmitted == true || fs['tel'].touched)? 'is-invalid' : ''}}"
+      id="tel" type="tel" formControlName="tel" placeholder="phone">
+    <div *ngIf="fs['tel'].errors?.['required'] && (isSubmitted == true || fs['tel'].touched)">
+      tel is required.
+    </div>
+    <div *ngIf="fs['tel'].errors?.['pattern'] && (isSubmitted == true || fs['tel'].touched)">
+      numbers only,must be at least 8 numbers long
+    </div>
+
+    <!-- validation on fees input -->
+    <input class="form-control form-control-sm  {{fs['fees'].errors && (isSubmitted == true || fs['fees'].touched)? 'is-invalid' : ''}}"
+      id="fees" type="fees" formControlName="fees" placeholder="fees">
+    <div *ngIf="fs['fees'].errors?.['required'] && (isSubmitted == true || fs['fees'].touched)">
+      fees is required.
+    </div>
+    <div *ngIf="fs['fees'].errors?.['pattern'] && (isSubmitted == true || fs['fees'].touched)">
+      numbers only
+    </div>
+    <input class="btn btn-primary form-control mt-3" type="submit" name="submit" id="submit" value="sign up" [disabled]="!myForm.valid">
+    <hr>
+    <div class="m-auto w-50 text-center">
+      already have account <a routerLink="/doctors">log in</a>
+    </div>
+  </form>
+</div>

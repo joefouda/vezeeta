@@ -1,0 +1,43 @@
+<div class="m-auto w-50 mt-3 p-4 box-shadowing">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">name</th>
+                <th scope="col">telephone</th>
+                <th scope="col">actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- display all doctors -->
+            <tr *ngFor="let item of doctors, let i = index">
+                <td>{{i+1}}</td>
+                <td scope="row">{{ item.name }}</td>
+                <td>{{ item.tel }}</td>
+                <td>
+                    <!-- send doctor id and doctor name and ng template for delete button reference -->
+                    <button class="btn btn-danger" (click)="deleteDoctor(item._id,item.name,content)">Delete</button>
+                </td>
+                <td>-----------------</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!-- ng template for delete button -->
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-title">Delete Doctor</h4>
+    </div>
+    <div class="modal-body">
+        <p><strong>Are you sure you want to delete <span class="text-primary">Dr / {{name}}</span> profile?</strong></p>
+        <p>All information associated to this doctor profile will be permanently deleted.
+            <span class="text-danger">This operation can not be undone.</span>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+        <button type="button" class="btn btn-danger" (click)="modal.close('Ok click')">Ok</button>
+    </div>
+</ng-template>
+
+

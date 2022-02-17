@@ -1,7 +1,7 @@
+import { LocationStrategy } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Router,NavigationStart, Event as NavigationEvent } from '@angular/router';
-import { throwError } from 'rxjs';
-import { DoctorService } from './service/doctor.service';
+import { DoctorService } from './doctor/doctor.service';
+import { UserService } from './user/user.service';
 
 @Component({
   selector: 'app-root',
@@ -9,19 +9,17 @@ import { DoctorService } from './service/doctor.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  auth:any
-  event$:any
-  constructor(private router: Router,private doctorService:DoctorService) {}
-  url = this.router.url
+  constructor(private userService:UserService, private doctorService:DoctorService,private urlTest:LocationStrategy) {}
 
   // check wither to display navbar or not
   shouldDisplayNavBar(){
     //return false if page is not found
-    return !this.url.includes('/page-not-found');
+    return this.urlTest.path() != '/page-not-found'
   }
 
   ngOnInit(): void {
       // presiste in website if token is available
+      this.userService.autoLogin()
       this.doctorService.autoLogin()
   }
  

@@ -1,0 +1,32 @@
+<div class="m-auto mt-3 w-50 p-4 box-shadowing">
+  <p *ngIf="auth">
+    <ngb-alert type="danger" [dismissible]="false">{{ auth }}</ngb-alert>
+  </p>
+  <form [formGroup]="myForm" (submit)="onSubmit()">
+      <!-- validation on email input -->
+    <input class="form-control {{fs['username'].errors && (isSubmitted == true || fs['username'].touched)? 'is-invalid' : ''}}"
+      id="username" type="username" formControlName="username" placeholder="Email">
+    <div *ngIf="fs['username'].errors?.['required'] && (isSubmitted == true || fs['username'].touched)">
+      email is required.
+    </div>
+    <div *ngIf="fs['username'].errors?.['pattern'] && (isSubmitted == true || fs['username'].touched)">
+      invalid email format
+    </div>
+
+    <!-- validation on password input -->
+    <input
+      class="form-control {{fs['password'].errors && (isSubmitted == true || fs['password'].touched)? 'is-invalid' : ''}}"
+      id="password" type="password" formControlName="password" placeholder="Password">
+    <div *ngIf="fs['password'].errors?.['required'] && (isSubmitted == true || fs['password'].touched)">
+      password is required.
+    </div>
+    <div *ngIf="fs['password'].errors?.['pattern'] && (isSubmitted == true || fs['password'].touched)">
+      password must be at least 8 characters long.
+    </div>
+      <input class="btn btn-primary form-control mt-3" type="submit" name="submit" id="submit" value="log in" [disabled]="!myForm.valid">
+      <hr>
+      <div class="m-auto w-50 text-center">
+         <a routerLink="/doctors/sign-up">Create new Account</a>
+      </div>
+  </form>
+</div>

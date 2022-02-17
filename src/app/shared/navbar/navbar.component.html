@@ -1,0 +1,77 @@
+<nav class="navbar navbar-expand-lg navbar-primary bg-light" *ngIf="userRole()">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="home">Vezeeta</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <ul id="routers">
+      <!-- <li>
+            <a class="m-2" aria-current="page" href="admin-dashboard">admin-dashboard</a>
+          </li> -->
+      <li *ngIf="isAuthenticated">
+        <a class="m-2" aria-current="page" routerLink="/home">Home</a>
+      </li>
+      <li *ngIf="isAuthenticated">
+        <a class="m-2" aria-current="page" routerLink="/profile">Profile</a>
+      </li>
+      <li *ngIf="isAuthenticated">
+        <a class="m-2" style="cursor: pointer;" (click)="logOut()">log Out</a>
+      </li>
+      <li *ngIf="!isAuthenticated">
+        <a class="m-2" routerLink="sign-up">sign Up</a>
+      </li>
+      <li *ngIf="!isAuthenticated">
+        <a class="m-2" routerLink="log-in">log In</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-primary bg-light" *ngIf="doctorRole()">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="doctors">Vezeeta-Doctors</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <ul id="routers">
+      <!-- <li>
+            <a class="m-2" aria-current="page" href="admin-dashboard">admin-dashboard</a>
+          </li> -->
+      <!-- <li *ngIf="isAuthenticated">
+        <a class="m-2" aria-current="page" routerLink="/home">Home</a>
+      </li> -->
+      <li *ngIf="isAuthenticated">
+        <a class="m-2" aria-current="page" routerLink="doctors/profile">Profile</a>
+      </li>
+      <li *ngIf="isAuthenticated">
+        <a class="m-2" style="cursor: pointer;" (click)="logOut()">log Out</a>
+      </li>
+      <li *ngIf="!isAuthenticated">
+        <a class="m-2" routerLink="doctors/sign-up">sign Up</a>
+      </li>
+      <li *ngIf="!isAuthenticated">
+        <a class="m-2" routerLink="doctors">login</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-primary bg-light" *ngIf="adminRole()">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="admin-dashboard">Vezeeta-Admin</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <ul id="routers">
+      <li>
+        <a class="m-2" routerLink="admin-dashboard/users-list">Users</a>
+      </li>
+      <li>
+        <a class="m-2" routerLink="admin-dashboard/doctors-list">Doctors</a>
+      </li>
+    </ul>
+  </div>
+</nav>
