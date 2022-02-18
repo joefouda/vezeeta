@@ -15,6 +15,7 @@ import { LogInComponent } from './user/pages/log-in/log-in.component';
 import { DoctorDetailsComponent } from './user/pages/doctor-details/doctor-details.component';
 import { ProfileComponent } from './user/pages/profile/profile.component';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
+import { ProfileEditComponent } from './user/pages/profile-edit/profile-edit.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.co
     LogInComponent,
     DoctorDetailsComponent,
     ProfileComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ProfileEditComponent
   ],
   imports: [
     BrowserModule,

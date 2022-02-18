@@ -11,7 +11,7 @@ export class LogOutGard implements CanActivate {
         return this.doctorService.doctor.pipe(
             take(1),
             map(doc=>{
-            const isAuthenticated = doc ? true:false
+            const isAuthenticated = doc?.token ? true:false
             if(isAuthenticated){
                 return this.router.createUrlTree(['/doctors/profile']);
             }

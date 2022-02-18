@@ -10,20 +10,21 @@ import { UserService } from 'src/app/user/user.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit{
-  isAuthenticated = false;
+  doctorAuth = false;
+  userAuth = false;
   constructor(private userService:UserService, private doctorService:DoctorService, private url:LocationStrategy) {}
 
   ngOnInit(){
     if(this.userRole()){
       this.userService.user.subscribe(u=>{
         // user is authenticated if there is a token
-        this.isAuthenticated = u ? true: false; 
+        this.userAuth = u?.token ? true: false; 
       })
     }
     if(this.doctorRole()){
-      this.doctorService.doctor.subscribe(u=>{
+      this.doctorService.doctor.subscribe(doc=>{
         // doctor is authenticated if there is a token
-        this.isAuthenticated = u ? true: false; 
+        this.doctorAuth = doc?.token ? true: false; 
       })
     }
   }
@@ -41,7 +42,7 @@ export class NavbarComponent implements OnInit{
   }
 
   doctorRole(){
-    return (this.url.path() == '/doctors' || this.url.path() == '/doctors/sign-up' || this.url.path() == '/doctors/profile')?true:false;
+    return (this.url.path() == '/doctors' || this.url.path() == '/doctors/sign-up' || this.url.path() == '/doctors/profile' || this.url.path() == '/doctors/edit-profile')?true:false;
   }
 
   adminRole(){

@@ -7,12 +7,14 @@ import { DoctorRouterModule } from "./doctor.routing.module";
 import { LogInComponent } from "./pages/log-in/log-in.component";
 import { ProfileComponent } from "./pages/profile/profile.component";
 import { SignUpComponent } from "./pages/sign-up/sign-up.component";
+import { ProfileEditComponent } from './pages/profile-edit/profile-edit.component';
 
 @NgModule({
     declarations:[
         LogInComponent,
         SignUpComponent,
-        ProfileComponent
+        ProfileComponent,
+        ProfileEditComponent
     ],
     imports:[
         CommonModule,

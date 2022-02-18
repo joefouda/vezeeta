@@ -11,7 +11,7 @@ export class AuthGard implements CanActivate {
         return this.userService.user.pipe(
             take(1),
             map(doc=>{
-            const isAuthenticated = doc ? true:false
+            const isAuthenticated = doc?.token ? true:false
             if(isAuthenticated){
                 return true;
             }

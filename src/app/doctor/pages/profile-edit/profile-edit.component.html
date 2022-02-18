@@ -1,0 +1,170 @@
+<section style="background-color: #eee;">
+    <div class="container-xl py-5">
+        <div class="row">
+            <div class="col-4">
+                <div class="card mb-4">
+                    <div class="card-body text-center">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                            alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                    </div>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <form [formGroup]="myForm" (submit)="onSubmit()">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Name</p>
+                                </div>
+
+                                <!-- validation on name input -->
+                                <div class="col-sm-9">
+                                    <input
+                                        class="form-control form-control-sm col-sm-9 {{fs['name'].errors && (isSubmitted == true || fs['name'].touched)? 'is-invalid' : ''}}"
+                                        id="name" type="text" formControlName="name" placeholder="Name">
+                                    <div
+                                        *ngIf="fs['name'].errors?.['required'] && (isSubmitted == true || fs['name'].touched)">
+                                        name is required.
+                                    </div>
+                                    <div
+                                        *ngIf="fs['name'].errors?.['minlength'] && (isSubmitted == true || fs['name'].touched)">
+                                        name must be at least 4 characters long.
+                                    </div>
+                                    <div
+                                        *ngIf="fs['name'].errors?.['maxlength'] && (isSubmitted == true || fs['name'].touched)">
+                                        name must be less than 25 characters.
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Email</p>
+                                </div>
+                                
+                                <!-- validation on email input -->
+                                <div class="col-sm-9">
+                                    <input
+                                        class="form-control form-control-sm  {{fs['email'].errors && (isSubmitted == true || fs['email'].touched)? 'is-invalid' : ''}}"
+                                        id="email" type="email" formControlName="email" placeholder="Email">
+                                    <div
+                                        *ngIf="fs['email'].errors?.['required'] && (isSubmitted == true || fs['email'].touched)">
+                                        Email is required.
+                                    </div>
+                                    <div
+                                        *ngIf="fs['email'].errors?.['pattern'] && (isSubmitted == true || fs['email'].touched)">
+                                        invalid email format
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Specialization</p>
+                                </div>
+
+                                <!-- validation on name input -->
+                                <div class="col-sm-9">
+                                    <input
+                                        class="form-control form-control-sm  {{fs['specialization'].errors && (isSubmitted == true || fs['specialization'].touched)? 'is-invalid' : ''}}"
+                                        id="specialization" type="text" formControlName="specialization"
+                                        placeholder="Specialization">
+                                    <div
+                                        *ngIf="fs['specialization'].errors?.['required'] && (isSubmitted == true || fs['specialization'].touched)">
+                                        specialization is required.
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Password</p>
+                                </div>
+
+                                <!-- validation on password input -->
+                                <div class="col-sm-9">
+                                    <input
+                                        class="form-control form-control-sm  {{fs['password'].errors && (isSubmitted == true || fs['password'].touched)? 'is-invalid' : ''}}"
+                                        id="password" type="password" formControlName="password" placeholder="Password">
+                                    <div
+                                        *ngIf="fs['password'].errors?.['required'] && (isSubmitted == true || fs['password'].touched)">
+                                        password is required.
+                                    </div>
+                                    <div
+                                        *ngIf="fs['password'].errors?.['pattern'] && (isSubmitted == true || fs['password'].touched)">
+                                        password must be at least 8 characters long, must have at least one letter.
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Phone</p>
+                                </div>
+
+                                <!-- validation on tel input -->
+                                <div class="col-sm-9">
+                                    <input
+                                        class="form-control form-control-sm  {{fs['tel'].errors && (isSubmitted == true || fs['tel'].touched)? 'is-invalid' : ''}}"
+                                        id="tel" type="tel" formControlName="tel" placeholder="phone">
+                                    <div
+                                        *ngIf="fs['tel'].errors?.['required'] && (isSubmitted == true || fs['tel'].touched)">
+                                        tel is required.
+                                    </div>
+                                    <div
+                                        *ngIf="fs['tel'].errors?.['pattern'] && (isSubmitted == true || fs['tel'].touched)">
+                                        numbers only,must be at least 8 numbers long
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p>Fees</p>
+                                </div>
+
+                                <!-- validation on fees input -->
+                                <div class="col-sm-9">
+                                    <input
+                                        class="form-control form-control-sm  {{fs['fees'].errors && (isSubmitted == true || fs['fees'].touched)? 'is-invalid' : ''}}"
+                                        id="fees" type="fees" formControlName="fees" placeholder="fees">
+                                    <div
+                                        *ngIf="fs['fees'].errors?.['required'] && (isSubmitted == true || fs['fees'].touched)">
+                                        fees is required.
+                                    </div>
+                                    <div
+                                        *ngIf="fs['fees'].errors?.['pattern'] && (isSubmitted == true || fs['fees'].touched)">
+                                        numbers only
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Address</p>
+                                </div>
+
+                                <!-- validation on address input -->
+                                <div class="col-sm-9">
+                                    <input
+                                        class="form-control form-control-sm  {{fs['address'].errors && (isSubmitted == true || fs['address'].touched)? 'is-invalid' : ''}}"
+                                        id="address" type="address" formControlName="address" placeholder="Address">
+                                    <div
+                                        *ngIf="fs['address'].errors?.['required'] && (isSubmitted == true || fs['address'].touched)">
+                                        address is required.
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="text-center">
+                                <button class="btn btn-secondary col-sm-4" (click)="onCancel()">Cancel</button> |
+                                <button type="submit" class="btn btn-primary col-sm-4">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

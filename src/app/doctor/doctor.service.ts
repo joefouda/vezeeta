@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { BehaviorSubject, tap } from 'rxjs';
+import { BehaviorSubject, Subject, tap } from 'rxjs';
 import { Doctor } from './auth/doctor.model';
 import { Router } from '@angular/router';
+import { DoctorData } from './auth/doctorData';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
 export class DoctorService {
   //define behavior subject to keep information of logged in doctor (token)
   doctor = new BehaviorSubject<Doctor | null>(null)
+  doctorData = new Subject<DoctorData>();
   constructor(private http: HttpClient,private router:Router) { }
 
   signUp(data:any){
@@ -25,7 +27,9 @@ export class DoctorService {
         this.doctor.next(doctor);
 
         // keep my token in local storage to keep it presistence on hard reload
-        localStorage.setItem('token',doctor.token)
+        if(res.token){
+          localStorage.setItem('doctorToken',doctor.token)
+        }
     }))
   }
 
@@ -38,7 +42,7 @@ export class DoctorService {
 
   autoLogin(){
     // get my token from local storage to reset my subject 
-    const doctorToken = localStorage.getItem('token')
+    const doctorToken = localStorage.getItem('doctorToken')
     if(!doctorToken){
       return
     }
@@ -58,8 +62,10 @@ export class DoctorService {
   }
 
   getProfileInfo(token:string) {
-    return this.http.get(`${environment.base_url}doctors/profile`,{
+    this.http.get(`${environment.base_url}doctors/profile`,{
       headers: {'authorization':token}
+   }).subscribe((res:any)=>{
+     this.doctorData.next(res)
    })
   }
 

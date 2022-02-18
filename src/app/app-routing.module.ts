@@ -8,12 +8,14 @@ import { AuthGard } from './user/auth/user.guard';
 import { LogOutGard } from './user/auth/logOut.guard';
 import { SignUpComponent } from './user/pages/sign-up/sign-up.component';
 import { LogInComponent } from './user/pages/log-in/log-in.component';
+import { ProfileEditComponent } from './user/pages/profile-edit/profile-edit.component';
 
 const routes: Routes = [
   // set default route for my website
   { path: '', redirectTo: '/sign-up', pathMatch: 'full' },
   { path: 'home', component: DoctorListComponent,canActivate: [AuthGard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGard] },
+  { path: 'edit-profile', component: ProfileEditComponent, canActivate: [AuthGard] },
   { path: 'sign-up', component: SignUpComponent, canActivate: [LogOutGard]},
   { path: 'log-in', component: LogInComponent, canActivate: [LogOutGard]},
   { path: 'doctor-details/:dId', component: DoctorDetailsComponent, canActivate: [AuthGard] },

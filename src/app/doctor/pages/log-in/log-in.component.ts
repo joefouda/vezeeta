@@ -22,7 +22,7 @@ export class LogInComponent implements OnInit {
 
   onSubmit(){
     this.isSubmitted = true
-    if(this.myForm.status !== 'INVALID'){
+    if(this.myForm.valid){
       this.doctorDervice.logIn(this.myForm.value).subscribe((res:any)=>{
         // display error message if email or password are incorrect
         if(res.message == "invalid username or password"){
@@ -32,7 +32,11 @@ export class LogInComponent implements OnInit {
           },3000)
         } else {
           // navigate to home page if user exist
-          this.router.navigate(['doctors/profile'])
+          this.doctorDervice.doctor.subscribe(doc=>{
+            if(doc?.token){
+              this.router.navigate(['/doctors/profile'])
+            }
+          })
         }
       }, (err)=>{
         console.log(err);

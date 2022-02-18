@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-primary bg-light" *ngIf="userRole()">
   <div class="container-fluid">
-    <a class="navbar-brand" href="home">Vezeeta</a>
+    <a class="navbar-brand" routerLink="home">Vezeeta</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -9,20 +9,23 @@
       <!-- <li>
             <a class="m-2" aria-current="page" href="admin-dashboard">admin-dashboard</a>
           </li> -->
-      <li *ngIf="isAuthenticated">
+      <li *ngIf="userAuth">
         <a class="m-2" aria-current="page" routerLink="/home">Home</a>
       </li>
-      <li *ngIf="isAuthenticated">
+      <li *ngIf="userAuth">
         <a class="m-2" aria-current="page" routerLink="/profile">Profile</a>
       </li>
-      <li *ngIf="isAuthenticated">
+      <li *ngIf="userAuth">
         <a class="m-2" style="cursor: pointer;" (click)="logOut()">log Out</a>
       </li>
-      <li *ngIf="!isAuthenticated">
+      <li *ngIf="!userAuth">
         <a class="m-2" routerLink="sign-up">sign Up</a>
       </li>
-      <li *ngIf="!isAuthenticated">
+      <li *ngIf="!userAuth">
         <a class="m-2" routerLink="log-in">log In</a>
+      </li>
+      <li *ngIf="!userAuth">
+        <a class="m-2 link-success" routerLink="doctors">Vezeeta-Doctors</a>
       </li>
     </ul>
   </div>
@@ -30,7 +33,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-primary bg-light" *ngIf="doctorRole()">
   <div class="container-fluid">
-    <a class="navbar-brand" href="doctors">Vezeeta-Doctors</a>
+    <a class="navbar-brand" routerLink="doctors">Vezeeta-Doctors</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -42,17 +45,20 @@
       <!-- <li *ngIf="isAuthenticated">
         <a class="m-2" aria-current="page" routerLink="/home">Home</a>
       </li> -->
-      <li *ngIf="isAuthenticated">
+      <li *ngIf="doctorAuth">
         <a class="m-2" aria-current="page" routerLink="doctors/profile">Profile</a>
       </li>
-      <li *ngIf="isAuthenticated">
+      <li *ngIf="doctorAuth">
         <a class="m-2" style="cursor: pointer;" (click)="logOut()">log Out</a>
       </li>
-      <li *ngIf="!isAuthenticated">
+      <li *ngIf="!doctorAuth">
         <a class="m-2" routerLink="doctors/sign-up">sign Up</a>
       </li>
-      <li *ngIf="!isAuthenticated">
+      <li *ngIf="!doctorAuth">
         <a class="m-2" routerLink="doctors">login</a>
+      </li>
+      <li *ngIf="!doctorAuth">
+        <a class="m-2 link-success" routerLink="log-in">Vezeeta</a>
       </li>
     </ul>
   </div>
@@ -71,6 +77,12 @@
       </li>
       <li>
         <a class="m-2" routerLink="admin-dashboard/doctors-list">Doctors</a>
+      </li> |
+      <li>
+        <a class="m-2 link-success" routerLink="log-in">Vezeeta</a>
+      </li>
+      <li>
+        <a class="m-2 link-success" routerLink="doctors">Vezeeta-Doctors</a>
       </li>
     </ul>
   </div>

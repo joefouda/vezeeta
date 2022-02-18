@@ -32,7 +32,11 @@ export class LogInComponent implements OnInit {
           },3000)
         } else {
           // navigate to home page if user exist
-          this.router.navigate(['home'])
+          this.userService.user.subscribe(u=>{
+            if(u?.token){
+              this.router.navigate(['/home'])
+            }
+          })
         }
       }, (err)=>{
         console.log(err);
